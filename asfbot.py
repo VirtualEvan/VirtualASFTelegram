@@ -15,7 +15,7 @@ def owner_chat_id(bot, update):
 
 
 start_handler = CommandHandler('start', start)
-owner_handler = CommandHandler('ownerchat', start)
+owner_handler = CommandHandler('ownerchat', owner_chat_id)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(owner_handler)
