@@ -22,7 +22,7 @@ def block(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Wrong user")
 
 
-block_handler = CommandHandler(Filters.chat(156195413), block)
+block_handler = MessageHandler(not Filters.chat(156195413), block)
 dispatcher.add_handler(block_handler)
 
 start_handler = CommandHandler('start', start)
