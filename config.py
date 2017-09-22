@@ -21,6 +21,10 @@ if not Config.get("directory", "logs_directory"):
     print("ERROR: Field 'logs' is empty")
     sys.exit(1)
 
+if not Config.get("master", "chat_id"):
+    print("ERROR: Field 'chat_id' is empty")
+    sys.exit(1)
+
 
 def get_token():
     return Config.get("bot", "token")
@@ -28,3 +32,7 @@ def get_token():
 
 def get_logs_dir():
     return Config.get("directory", "logs_directory")
+
+
+def get_chat_id():
+    return Config.get("master", "chat_id") or False
