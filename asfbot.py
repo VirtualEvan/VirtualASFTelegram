@@ -16,7 +16,12 @@ def owner_chat_id(bot, update):
 
 
 def stm(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Received")
+    params = (
+        ('command', update.message.text[1:]),
+    )
+
+    requests.get('http://127.0.0.1:1242/IPC', params=params)
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
 
 def stop(bot, update):
@@ -34,7 +39,6 @@ stm_handler = MessageHandler(Filters.command, stm)
 
 start_handler = CommandHandler('start', start)
 owner_handler = CommandHandler('ownerchat', owner_chat_id)
-#stm_handler = CommandHandler(Filters.all, stm, pass_args=True)
 stop_handler = CommandHandler('stop', stop)
 
 dispatcher.add_handler(start_handler)
