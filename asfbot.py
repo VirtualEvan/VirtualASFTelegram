@@ -17,7 +17,16 @@ def owner_chat_id(bot, update):
 
 def redeem(bot, update, args):
     params = (
-        ('command', 'redeem 1-virtualevan ' + args),
+        ('command', 'redeem 1-virtualevan ' + ' '.join(args)),
+    )
+
+    response = requests.get('http://127.0.0.1:1242/IPC', params=params)
+    bot.send_message(chat_id=update.message.chat_id, text=response.text)
+
+
+def addlicense(bot, update, args):
+    params = (
+        ('command', 'addlicense ASF ' + ' '.join(args)),
     )
 
     response = requests.get('http://127.0.0.1:1242/IPC', params=params)
@@ -37,6 +46,7 @@ dispatcher.add_handler(block_handler)
 
 # STM commands
 redeem_handler = CommandHandler('redeem', redeem, pass_args=True)
+addlicense_handler = CommandHandler('addlicense', addlicense, pass_args=True)
 
 start_handler = CommandHandler('start', start)
 owner_handler = CommandHandler('ownerchat', owner_chat_id)
