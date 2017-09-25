@@ -56,6 +56,7 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(owner_handler)
 dispatcher.add_handler(stop_handler)
 dispatcher.add_handler(redeem_handler)
+dispatcher.add_handler(addlicense_handler)
 
 updater.start_polling()
 
