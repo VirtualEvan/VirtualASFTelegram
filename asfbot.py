@@ -17,7 +17,7 @@ def owner_chat_id(bot, update):
 
 def redeem(bot, update, args):
     params = (
-        ('command', 'redeem 1-virtualevan'.join(args)),
+        ('command', 'redeem 1-virtualevan ' + args),
     )
 
     requests.get('http://127.0.0.1:1242/IPC', params=params)
