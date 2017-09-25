@@ -15,9 +15,9 @@ def owner_chat_id(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.chat_id)
 
 
-def stm(bot, update):
+def redeem(bot, update, args):
     params = (
-        ('command', update.message.text[1:]),
+        ('command', 'redeem 1-virtualevan'.join(args)),
     )
 
     requests.get('http://127.0.0.1:1242/IPC', params=params)
@@ -35,7 +35,8 @@ def block(bot, update):
 block_handler = MessageHandler(~ Filters.chat(156195413), block)
 dispatcher.add_handler(block_handler)
 
-stm_handler = MessageHandler(Filters.command, stm)
+# STM commands
+redeem_handler = CommandHandler('redeem', redeem, pass_args=True)
 
 start_handler = CommandHandler('start', start)
 owner_handler = CommandHandler('ownerchat', owner_chat_id)
@@ -44,7 +45,7 @@ stop_handler = CommandHandler('stop', stop)
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(owner_handler)
 dispatcher.add_handler(stop_handler)
-dispatcher.add_handler(stm_handler)
+dispatcher.add_handler(redeem_handler)
 
 updater.start_polling()
 
