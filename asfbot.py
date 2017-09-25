@@ -20,8 +20,8 @@ def redeem(bot, update, args):
         ('command', 'redeem 1-virtualevan ' + args),
     )
 
-    requests.get('http://127.0.0.1:1242/IPC', params=params)
-    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+    response = requests.get('http://127.0.0.1:1242/IPC', params=params)
+    bot.send_message(chat_id=update.message.chat_id, text=response.text)
 
 
 def stop(bot, update):
