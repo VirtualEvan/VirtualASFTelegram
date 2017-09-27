@@ -62,6 +62,7 @@ def button(bot, update):
     bot.deleteMessage(chat_id=update.callback_query.message.chat_id, message_id=update.callback_query.message.message_id)
 
     response = requests.get('http://127.0.0.1:1242/IPC?command=' + update.callback_query.data)
+    print(response.text)
     bot.send_message(chat_id=update.message.chat_id, text=response.text)
 
 
