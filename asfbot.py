@@ -48,11 +48,11 @@ def addlicense(bot, update, args):
 
 def show_menu(bot, update, args=None):
     button_list = [
-        [InlineKeyboardButton("VirtualEvan", callback_data=update.message.text.partition[0][1:] + ' ' + '1-virtualevan' + ' '.join(args)),
-         InlineKeyboardButton("FidelKarthus", callback_data=update.message.text.partition[0][1:] + ' ' + '2-fidelkarthus' + ' '.join(args))],
-        [InlineKeyboardButton("Nikolai", callback_data=update.message.text.partition[0][1:] + ' ' + '3-nikolai' + ' '.join(args)),
-         InlineKeyboardButton("Ho Chi Minh", callback_data=update.message.text.partition[0][1:] + ' ' + '4-hochiminh' + ' '.join(args))],
-        [InlineKeyboardButton("All of them", callback_data=update.message.text.partition[0][1:] + ' ' + 'ASF' + ' '.join(args))]
+        [InlineKeyboardButton("VirtualEvan", callback_data=update.message.text.partition(' ')[0][1:] + ' ' + '1-virtualevan' + ' '.join(args)),
+         InlineKeyboardButton("FidelKarthus", callback_data=update.message.text.partition(' ')[0][1:] + ' ' + '2-fidelkarthus' + ' '.join(args))],
+        [InlineKeyboardButton("Nikolai", callback_data=update.message.text.partition(' ')[0][1:] + ' ' + '3-nikolai' + ' '.join(args)),
+         InlineKeyboardButton("Ho Chi Minh", callback_data=update.message.text.partition(' ')[0][1:] + ' ' + '4-hochiminh' + ' '.join(args))],
+        [InlineKeyboardButton("All of them", callback_data=update.message.text.partition(' ')[0][1:] + ' ' + 'ASF' + ' '.join(args))]
     ]
     reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=3))
     bot.send_message(chat_id=update.message.chat_id, text="Which bot?", reply_markup=reply_markup)
