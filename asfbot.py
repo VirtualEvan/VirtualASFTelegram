@@ -63,7 +63,7 @@ def button(bot, update):
 
     response = requests.get('http://127.0.0.1:1242/IPC?command=' + update.callback_query.data)
     print(response.text)
-    bot.send_message(chat_id=update.message.chat_id, text=response.text)
+    bot.send_message(chat_id=update.callback_query.message.chat_id, text=response.text)
 
 
 def block(bot, update):
